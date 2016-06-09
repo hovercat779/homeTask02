@@ -202,4 +202,17 @@
     <class name="entity.OrdersEntity" table="ORDERS" schema="testDB">
         <one-to-one name="ord" class="entity.CustomersEntity"/>
     </class>
+    <class name="entity.OrdersEntity" table="ORDERS" schema="testDB">
+        <many-to-one name="o" class="entity.ProductsEntity">
+            <column name="PRODUCT"/>
+        </many-to-one>
+    </class>
+    <class name="entity.ProductsEntity" table="PRODUCTS" schema="testDB">
+        <list name="p" inverse="true">
+            <key>
+                <column name="PRODUCT"/>
+            </key>
+            <one-to-many not-found="ignore" class="entity.OrdersEntity"/>
+        </list>
+    </class>
 </hibernate-mapping>
