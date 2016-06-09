@@ -13,6 +13,9 @@ import utils.HibernateUtil;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static com.sun.tools.attach.VirtualMachine.list;
@@ -86,8 +89,16 @@ public class DAOquery {
         Session session = factory.openSession();
         List<OrdersEntity> entities = null;
 
+
         try{
-            entities = session.createCriteria(OrdersEntity.class).addOrder(Order.asc("cust")).list();
+            SimpleDateFormat sd = new SimpleDateFormat("YYYY-MM-DD");
+
+            Date date1 = sd.parse("2007-12-31");
+            Date date2 = sd.parse("2008-01-24");
+            Criteria criteria = session.createCriteria(OrdersEntity.class);
+            criteria.addOrder(Order.asc("cust"));
+            criteria.add(Restrictions.between("orderDate", date1, date2));
+            entities = criteria.list();
 
 
         }catch (Exception e) {
@@ -97,8 +108,8 @@ public class DAOquery {
         }
 
        for (OrdersEntity entity : entities) {
-//            System.out.println(entity.getOrderDate() + " - " + entity.getOrd().getCompany());entity.getProduct()
-           System.out.println(entity.getAmount() + " - " + entity.getOrd().getCompany() + " - " + entity.getProduct());
+
+           System.out.println(entity.getOrderDate() + " - " + entity.getAmount() + " - " + entity.getOrd().getCompany() + " - " + entity.getO().getDescription());
         }
 
         return entities;

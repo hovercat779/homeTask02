@@ -21,6 +21,7 @@ public class OrdersEntity implements Serializable {
     private String mfr;
     private String product;
     private CustomersEntity ord;
+    private ProductsEntity o;
 
     public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
@@ -158,4 +159,13 @@ public class OrdersEntity implements Serializable {
         this.ord = ord;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT", referencedColumnName = "PRODUCT_ID", nullable = false)
+    public ProductsEntity getO() {
+        return o;
+    }
+
+    public void setO(ProductsEntity o) {
+        this.o = o;
+    }
 }

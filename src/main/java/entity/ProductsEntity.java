@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by hovercat on 06.06.16.
@@ -15,6 +16,7 @@ public class ProductsEntity {
     private String description;
     private BigDecimal price;
     private int qtyOnHand;
+    private List<OrdersEntity> p;
 
     public void setQtyOnHand(Integer qtyOnHand) {
         this.qtyOnHand = qtyOnHand;
@@ -96,4 +98,12 @@ public class ProductsEntity {
         return result;
     }
 
+    @OneToMany(mappedBy = "o")
+    public List<OrdersEntity> getP() {
+        return p;
+    }
+
+    public void setP(List<OrdersEntity> p) {
+        this.p = p;
+    }
 }
