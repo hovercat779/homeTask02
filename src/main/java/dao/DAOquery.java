@@ -98,7 +98,7 @@ public class DAOquery {
 
        for (OrdersEntity entity : entities) {
 //            System.out.println(entity.getOrderDate() + " - " + entity.getOrd().getCompany());entity.getProduct()
-           System.out.println(entity.getAmount() + " - " + entity.getOrd().getCompany() + " - " + entity.getO().getDescription());
+           System.out.println(entity.getAmount() + " - " + entity.getOrd().getCompany() + " - " + entity.getProduct());
         }
 
         return entities;

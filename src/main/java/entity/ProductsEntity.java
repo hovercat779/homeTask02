@@ -15,7 +15,6 @@ public class ProductsEntity {
     private String description;
     private BigDecimal price;
     private int qtyOnHand;
-    private OrdersEntity p;
 
     public void setQtyOnHand(Integer qtyOnHand) {
         this.qtyOnHand = qtyOnHand;
@@ -97,12 +96,4 @@ public class ProductsEntity {
         return result;
     }
 
-    @OneToOne(mappedBy = "o")
-    public OrdersEntity getP() {
-        return p;
-    }
-
-    public void setP(OrdersEntity p) {
-        this.p = p;
-    }
 }
