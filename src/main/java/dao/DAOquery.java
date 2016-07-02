@@ -50,7 +50,7 @@ public class DAOquery {
 
 
         try (Session session = factory.openSession()) {
-            SimpleDateFormat sd = new SimpleDateFormat("YYYY-MM-DD");
+            SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
 
             Date date1 = sd.parse("2007-12-31");
             Date date2 = sd.parse("2008-01-24");
