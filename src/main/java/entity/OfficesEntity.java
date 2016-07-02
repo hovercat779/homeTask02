@@ -120,11 +120,11 @@ public class OfficesEntity {
     }
 
     @OneToMany(mappedBy = "sl", fetch = FetchType.EAGER)
-    public List<SalesrepsEntity>  getOf() {
+    public List<SalesrepsEntity> getOf() {
         return of;
     }
 
-    public void setOf(List<SalesrepsEntity>  of) {
+    public void setOf(List<SalesrepsEntity> of) {
         this.of = of;
     }
 }

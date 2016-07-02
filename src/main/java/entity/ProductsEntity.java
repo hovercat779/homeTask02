@@ -9,10 +9,8 @@ import java.util.List;
  */
 @Entity
 @Table(name = "PRODUCTS", schema = "testDB", catalog = "")
-@IdClass(ProductsEntityPK.class)
 public class ProductsEntity {
-    private String mfrId;
-    private String productId;
+    private ProductsEntityPK keyl;
     private String description;
     private BigDecimal price;
     private int qtyOnHand;
@@ -22,24 +20,13 @@ public class ProductsEntity {
         this.qtyOnHand = qtyOnHand;
     }
 
-    @Id
-    @Column(name = "MFR_ID", nullable = false, length = 3)
-    public String getMfrId() {
-        return mfrId;
+    @EmbeddedId
+    public ProductsEntityPK getKeyl() {
+        return keyl;
     }
 
-    public void setMfrId(String mfrId) {
-        this.mfrId = mfrId;
-    }
-
-    @Id
-    @Column(name = "PRODUCT_ID", nullable = false, length = 5)
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setKeyl(ProductsEntityPK keyl) {
+        this.keyl = keyl;
     }
 
     @Basic
@@ -80,8 +67,6 @@ public class ProductsEntity {
         ProductsEntity that = (ProductsEntity) o;
 
         if (qtyOnHand != that.qtyOnHand) return false;
-        if (mfrId != null ? !mfrId.equals(that.mfrId) : that.mfrId != null) return false;
-        if (productId != null ? !productId.equals(that.productId) : that.productId != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (price != null ? !price.equals(that.price) : that.price != null) return false;
 
@@ -90,9 +75,7 @@ public class ProductsEntity {
 
     @Override
     public int hashCode() {
-        int result = mfrId != null ? mfrId.hashCode() : 0;
-        result = 31 * result + (productId != null ? productId.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
+        int result = (description != null ? description.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + qtyOnHand;
         return result;

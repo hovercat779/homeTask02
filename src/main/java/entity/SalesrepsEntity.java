@@ -3,6 +3,7 @@ package entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by hovercat on 06.06.16.
@@ -20,6 +21,7 @@ public class SalesrepsEntity {
     private Integer repOffice;
     private Integer manager;
     private OfficesEntity sl;
+    private List<OrdersEntity> slrep;
 
     @Id
     @Column(name = "EMPL_NUM", nullable = false)
@@ -162,5 +164,14 @@ public class SalesrepsEntity {
 
     public void setSl(OfficesEntity sl) {
         this.sl = sl;
+    }
+
+    @OneToMany(mappedBy = "or")
+    public List<OrdersEntity> getSlrep() {
+        return slrep;
+    }
+
+    public void setSlrep(List<OrdersEntity> slrep) {
+        this.slrep = slrep;
     }
 }

@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.List;
 
 /**
  * Created by hovercat on 06.06.16.
@@ -18,10 +17,9 @@ public class OrdersEntity implements Serializable {
     private BigDecimal amount;
     private Integer cust;
     private Integer rep;
-    private String mfr;
-    private String product;
     private CustomersEntity ord;
     private ProductsEntity o;
+    private SalesrepsEntity or;
 
     public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
@@ -101,38 +99,18 @@ public class OrdersEntity implements Serializable {
         return cust;
     }
 
+//    @Basic
+//    @Column(name = "REP", nullable = true, insertable = false, updatable = false)
+//    public Integer getRep() {
+//        return rep;
+//    }
+
     public void setCust(Integer cust) {
         this.cust = cust;
     }
 
-    @Basic
-    @Column(name = "REP", nullable = true)
-    public Integer getRep() {
-        return rep;
-    }
-
     public void setRep(Integer rep) {
         this.rep = rep;
-    }
-
-    @Basic
-    @Column(name = "MFR", nullable = false, length = 3)
-    public String getMfr() {
-        return mfr;
-    }
-
-    public void setMfr(String mfr) {
-        this.mfr = mfr;
-    }
-
-    @Basic
-    @Column(name = "PRODUCT", nullable = false, length = 5)
-    public String getProduct() {
-        return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
     }
 
     @Override
@@ -144,8 +122,6 @@ public class OrdersEntity implements Serializable {
                 ", amount=" + amount +
                 ", cust=" + cust +
                 ", rep=" + rep +
-                ", mfr='" + mfr + '\'' +
-                ", product='" + product + '\'' +
                 '}';
     }
 
@@ -160,12 +136,23 @@ public class OrdersEntity implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT", referencedColumnName = "PRODUCT_ID", nullable = false)
+    @JoinColumns({@JoinColumn(name = "PRODUCT", referencedColumnName = "PRODUCT_ID", nullable = false),
+            @JoinColumn(name = "MFR", referencedColumnName = "MFR_ID", nullable = false)})
     public ProductsEntity getO() {
         return o;
     }
 
     public void setO(ProductsEntity o) {
         this.o = o;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "REP", referencedColumnName = "EMPL_NUM")
+    public SalesrepsEntity getOr() {
+        return or;
+    }
+
+    public void setOr(SalesrepsEntity or) {
+        this.or = or;
     }
 }

@@ -1,18 +1,18 @@
 package entity;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**
  * Created by hovercat on 06.06.16.
  */
+@Embeddable
 public class ProductsEntityPK implements Serializable {
     private String mfrId;
     private String productId;
 
     @Column(name = "MFR_ID", nullable = false, length = 3)
-    @Id
     public String getMfrId() {
         return mfrId;
     }
@@ -22,7 +22,6 @@ public class ProductsEntityPK implements Serializable {
     }
 
     @Column(name = "PRODUCT_ID", nullable = false, length = 5)
-    @Id
     public String getProductId() {
         return productId;
     }

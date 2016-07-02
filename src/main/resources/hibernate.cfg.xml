@@ -1,33 +1,34 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
+    <session-factory>
 
-    <property name="hibernate.dialect">
-      org.hibernate.dialect.MySQLDialect</property>
-    <!--<property name="hibernate.connection.driver_class">-->
-      <!--com.mysql.jdbc.Driver</property>-->
-    <!--<property name="hibernate.connection.url">-->
-      <!--jdbc:mysql://localhost/2db</property>-->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+        <!--<property name="hibernate.connection.driver_class">-->
+        <!--com.mysql.jdbc.Driver</property>-->
+        <!--<property name="hibernate.connection.url">-->
+        <!--jdbc:mysql://localhost/2db</property>-->
 
-    <property name="hibernate.show_sql">true</property>
-    <property name="hbm2ddl.auto">validate|update|create-drop|create</property>
+        <property name="hibernate.show_sql">true</property>
+        <!--<property name="hbm2ddl.auto">validate|update|create-drop|create</property>-->
 
-    <property name="connection.url">jdbc:mysql://localhost:3306/testDB</property>
-    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">root</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/testDB</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
 
-    <property name=""/>
-    <mapping class="entity.CustomersEntity"/>
-    <mapping class="entity.OfficesEntity"/>
-    <mapping class="entity.OrdersEntity"/>
-    <mapping class="entity.ProductsEntity"/>
-    <mapping class="entity.SalesrepsEntity"/>
-    <!--<mapping resource="mapping.xml"/>-->
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
-  </session-factory>
+        <property name=""/>
+        <mapping class="entity.CustomersEntity"/>
+        <mapping class="entity.OfficesEntity"/>
+        <mapping class="entity.OrdersEntity"/>
+        <mapping class="entity.ProductsEntity"/>
+        <mapping class="entity.SalesrepsEntity"/>
+        <!--<mapping resource="mapping.xml"/>-->
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
 </hibernate-configuration>
